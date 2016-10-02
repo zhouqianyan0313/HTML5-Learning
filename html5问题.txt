@@ -1,0 +1,7 @@
+1. demo1.html P4，获取当前位置，得到PERMISSION_DENIED错误。
+
+2. IE9以下版本的ie浏览器，需要<script src="excanvas.js"></script>才能支持canvas，很多功能还是有所限制。
+   Google发布的库，ExplorerCanvas
+
+3. ctx.arc(100, 100, 70, 0, 30*Math.PI/180, true/false);
+   true：逆时针，false：顺时针

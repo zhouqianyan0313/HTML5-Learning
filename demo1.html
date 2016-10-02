@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+</head>
+<body>
+
+<script type="text/javascript">
+	window.addEventListener('load', function(){
+		//alert('1');
+		if (navigator.geolocation){
+			//alert('2');
+			var options = {timeout:60000};
+			navigator.geolocation.watchPosition(update, errorHandler, options);
+			//alert('4');
+		}
+	}, false);
+
+	function errorHandler(err) {
+            if(err.code == err.PERMISSION_DENIED) {//1
+               alert("Error: Access is denied!");
+            }
+            
+            else if( err.code == 2) {
+               alert("Error: Position is unavailable!");
+            }
+         }
+
+	function update(position){
+		//alert('3');
+		var lat = position.coords.latitude;
+		var lng = position.coords.longitude;
+		document.write('纬度：'+lat+'，经度：'+lng);
+	}
+</script>
+
+</body>
+</html>
