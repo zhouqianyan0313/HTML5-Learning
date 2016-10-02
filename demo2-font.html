@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>绘制文字</title>
+</head>
+<body>
+<canvas id="canvassample" width="500" height="600"></canvas>
+
+<script type="text/javascript">
+	var c = document.getElementById('canvassample');
+	var ctx = c.getContext("2d");
+
+	//ctx.beginPath();
+	ctx.font = "lighter italic 20px Arial";//粗体效果font-weight 斜体font-style 大小 字体
+	ctx.fillText("Hello World", 100, 50);//实心
+
+	//ctx.beginPath();
+	ctx.font = "600 oblique 20px serif";
+	ctx.strokeText("Hello World", 100, 100);//线条
+</script>
+
+</body>
+</html>
