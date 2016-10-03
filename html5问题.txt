@@ -5,3 +5,9 @@
 
 3. ctx.arc(100, 100, 70, 0, 30*Math.PI/180, true/false);
    true：逆时针，false：顺时针
+
+4. demo6.html中，发现在chrome中使用getImageData方法出错：
+   Uncaught SecurityError: Failed to execute 'getImageData' 
+   on 'CanvasRenderingContext2D': The canvas has been tainted by cross-origin data.
+
+   涉及安全问题，为解决跨域访问图片，可在xampp中运行。
