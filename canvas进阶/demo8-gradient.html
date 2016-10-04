@@ -26,6 +26,61 @@
 	ctx.fillStyle = grd2;
 	ctx.fillRect(0, 150, 200, 200);
 
+	//globalCompositeOperation属性
+	ctx.fillStyle = "#0f0";
+	ctx.fillRect(250, 0, 50, 50);
+	ctx.globalCompositeOperation = "xor";//"source-over";
+	ctx.beginPath();
+	ctx.fillStyle = "#f00";
+	ctx.arc(300, 50, 30, 0, 2*Math.PI);
+	ctx.fill();
+
+	ctx.globalCompositeOperation = "source-over";
+
+	var image = new Image();
+	image.src="../colorful.png";
+	image.onload = function(){
+		ctx.drawImage(image, 350, 0);//左上
+
+		var imgdata = ctx.getImageData(350, 0, 150, 150);
+		var pixels = imgdata.data;
+
+		//颜色反转
+		for (var i = 0, n = pixels.length; i < n; i+=4){
+			pixels[i] = 255 - pixels[i];
+			pixels[i+1] = 255 - pixels[i+1];
+			pixels[i+2] = 255 - pixels[i+2];
+		}
+		ctx.putImageData(imgdata, 350, 150);//左下
+
+		//复原
+		for (var i = 0, n = pixels.length; i < n; i+=4){
+			pixels[i] = 255 - pixels[i];
+			pixels[i+1] = 255 - pixels[i+1];
+			pixels[i+2] = 255 - pixels[i+2];
+		}
+
+		//灰度控制
+		for (var i = 0, n = pixels.length; i < n; i+=4){
+			var grayscale = pixels[i]*.3 + pixels[i+1]*.59 + pixels[i+2]*.11;
+			pixels[i] = grayscale;
+			pixels[i+1] = grayscale;
+			pixels[i+2] = grayscale;
+		}
+		ctx.putImageData(imgdata, 500, 0);//右上
+
+		//阴影效果
+		ctx.shadowColor = "#f00";//color
+		ctx.shadowBlur = 10;//羽化程度
+		ctx.shadowOffsetX = 20;//X
+		ctx.shadowOffsetY = 30;//Y
+
+		ctx.drawImage(image, 500, 150);//右下
+
+	}
+
+
+
 </script>
 
 </body>
