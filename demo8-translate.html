@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>图形变换-translate</title>
+</head>
+<body>
+<!--img src="test.png" alt="bus" width="240" height="240"><br><br> -->
+<canvas id="canvassample" width="800" height="800"></canvas>
+
+<script type="text/javascript">
+	var c = document.getElementById("canvassample");
+	var ctx = c.getContext("2d");
+
+	//平移
+	ctx.beginPath();
+	ctx.strokeStyle = "#000";
+	ctx.strokeRect(10, 10, 150, 100);
+
+	ctx.translate(50, 100);
+	ctx.beginPath();
+	ctx.strokeStyle = "red";
+	ctx.strokeRect(10, 10, 150, 100);
+</script>
+
+</body>
+</html>

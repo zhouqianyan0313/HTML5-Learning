@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>图形变换-rotate</title>
+</head>
+<body>
+<!--img src="test.png" alt="bus" width="240" height="240"><br><br> -->
+<canvas id="canvassample" width="800" height="800"></canvas>
+
+<script type="text/javascript">
+	var c = document.getElementById("canvassample");
+	var ctx = c.getContext("2d");
+
+	ctx.beginPath();
+	ctx.strokeStyle = "#000";
+	ctx.strokeRect(200, 50, 100, 50);
+
+	//绕(0, 0)处旋转
+	ctx.rotate(45*Math.PI/180);
+	ctx.beginPath();
+	ctx.strokeStyle = "#f00";
+	ctx.strokeRect(200, 50, 100, 50);
+
+	ctx.rotate(-45*Math.PI/180);//复原
+
+	ctx.translate(250, 75);//canvas起始点平移到矩形的中心(250, 75)
+	ctx.rotate(45*Math.PI/180);//旋转
+	ctx.translate(-250, -75);//消除平移效果，复原
+	ctx.beginPath();//总体效果为绕矩形中心点旋转45度
+	ctx.strokeStyle = "blue";
+	ctx.strokeRect(200, 50, 100, 50);
+
+
+</script>
+
+</body>
+</html>
