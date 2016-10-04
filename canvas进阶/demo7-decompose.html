@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>图形变换-分解合并</title>
+</head>
+<body>
+<!--img src="test.png" alt="bus" width="240" height="240"><br><br> -->
+<canvas id="canvassample" width="800" height="800"></canvas>
+
+<script type="text/javascript">
+	var c = document.getElementById("canvassample");
+	var ctx = c.getContext("2d");
+
+	var image = new Image();
+	image.src="../test.png";//116*127
+	image.onload = function(){
+		ctx.save();
+		ctx.beginPath();
+		ctx.moveTo(20, 0);
+		ctx.lineTo(140, 20);
+		ctx.lineTo(0, 130);
+		ctx.closePath();
+		ctx.clip();
+		ctx.setTransform((120)/image.width, 20/image.width, -20/image.height, 130/image.height, 20, 0);
+		ctx.drawImage(image, 0, 0);
+		ctx.restore();
+
+		ctx.save();
+		ctx.beginPath();
+		ctx.moveTo(140, 20);
+		ctx.lineTo(0, 130);
+		ctx.lineTo(120, 150);
+		ctx.closePath();
+		ctx.clip();
+		ctx.setTransform((120-0)/image.width, (150-130)/image.width, (120-140)/image.height, (150-20)/image.height, 0, 130);
+		ctx.drawImage(image, 0, 0-127);//竟然神奇地拼上了23333
+		ctx.restore();
+	}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>图形变换-transform</title>
+</head>
+<body>
+<!--img src="test.png" alt="bus" width="240" height="240"><br><br> -->
+<canvas id="canvassample" width="800" height="800"></canvas>
+
+<script type="text/javascript">
+	var c = document.getElementById("canvassample");
+	var ctx = c.getContext("2d");
+
+	// transform(a, b, c, d, e, f)
+	// a c e
+	// b d f
+	// 0 0 1
+
+	//缩放：x1=a*x, y1=d*y
+	//transform(a, 0, 0, d, 0, 0)代替scale(a, d)
+	ctx.beginPath();
+	ctx.strokeStyle = "#000";
+	ctx.strokeRect(10, 10, 150, 100);
+
+	ctx.transform(3, 0, 0, 3, 0, 0);
+	ctx.beginPath();
+	ctx.strokeStyle = "red";
+	ctx.strokeRect(10, 10, 150, 100);
+
+	ctx.transform(1/3, 0, 0, 1/3, 0, 0);//复原
+
+	//平移：x1=x+e, y1=y+f
+	//transform(1, 0, 0, 1, e, f)代替translate(e, f)
+	ctx.transform(1, 0, 0, 1, 50, 100);
+	ctx.beginPath();
+	ctx.strokeStyle = "blue";
+	ctx.strokeRect(10, 10, 150, 100);
+
+	ctx.transform(1, 0, 0,1,  -50, -100);//复原
+
+	ctx.beginPath();
+	ctx.strokeStyle = "yellow";
+	ctx.strokeRect(200, 50, 100, 50);
+
+	//旋转：a=cosθ, b=sinθ, c=-sinθ, d=cosθ
+	//transform(cosθ, sinθ, -sinθ, cosθ)代替rotate(θ)
+	ctx.transform(Math.cos(45*Math.PI/180),
+		Math.sin(45*Math.PI/180),
+		-Math.sin(45*Math.PI/180),
+		Math.cos(45*Math.PI/180), 0, 0);
+	ctx.beginPath();
+	ctx.strokeStyle = "yellow";
+	ctx.strokeRect(200, 50, 100, 50);
+
+
+</script>
+
+</body>
+</html>
