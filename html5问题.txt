@@ -1,3 +1,4 @@
+canvas基础：
 1. demo1.html P4，获取当前位置，得到PERMISSION_DENIED错误。
 
 2. IE9以下版本的ie浏览器，需要<script src="excanvas.js"></script>才能支持canvas，很多功能还是有所限制。
@@ -11,3 +12,17 @@
    on 'CanvasRenderingContext2D': The canvas has been tainted by cross-origin data.
 
    涉及安全问题，为解决跨域访问图片，可在xampp中运行。
+
+lufylegend:
+1. demo3.html 
+graphics.add(function(coodx, coody){
+			LGlobal.canvas.strokeStyle = "#f00";//为什么最后一个六边形的边框会叠加上红色？
+			LGlobal.canvas.moveTo(300, 50);
+			LGlobal.canvas.lineTo(300, 100);
+			LGlobal.canvas.stroke();
+
+		});
+将这几行放在graphics.drawVertices(1, "#000", [[190, 300], [250, 300], [270, 350], [250, 400], [190, 400], [170, 350]], true, "#ccc");
+之后，则六边形的边框会叠加红色；
+放在之前，则不会影响六边形的边框颜色，为什么？
+*****************************************************未解决

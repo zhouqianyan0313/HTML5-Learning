@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Image</title>
+	<script type="text/javascript" src="../lufylegend-1.10.1.min.js"></script>
+</head>
+<body>
+<div id="mylegend">loading...</div>
+<script type="text/javascript">
+	var loader;
+
+	//speed, divid, width, height, completeFunc
+	init(50, "mylegend", 500, 350, main);
+
+	function main(){
+		loader = new LLoader();
+		loader.addEventListener(LEvent.COMPLETE, loadBitmapdata);
+		loader.load("../colorful.png", "bitmapData");
+	}
+
+	function loadBitmapdata(e){
+		var bitmapdata1 = new LBitmapData(loader.content);//完整的图片
+		var bitmapdata2 = new LBitmapData(loader.content, 50, 50, 150, 150);//x,y,w,h
+		var bitmap1 = new LBitmap(bitmapdata1);
+		var bitmap2 = new LBitmap(bitmapdata2);
+		bitmap1.rotate = 60;//角度
+		bitmap1.alpha = 0.4;
+		addChild(bitmap1);
+
+		
+		bitmap2.x = 200;
+		bitmap2.y = 0;
+		addChild(bitmap2);
+	}
+</script>
+</body>
+</html>

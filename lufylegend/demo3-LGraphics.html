@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>LGraphics</title>
+	<script type="text/javascript" src="../lufylegend-1.10.1.min.js"></script>
+</head>
+<body>
+<div id="mylegend">loading...</div>
+<script type="text/javascript">
+	var loader;
+
+	//speed, divid, width, height, completeFunc
+	init(50, "mylegend", 500, 500, main);
+
+	function main(){
+		var graphics = new LGraphics();
+		addChild(graphics);
+		//thickness, linecolor, [x,y,w,h], isfill, color
+		graphics.drawRect(1, "#000", [50, 50, 100, 100]);//默认是false
+		graphics.drawRect(1, "#000", [170, 50, 100, 100], true, "#ccc");
+
+		//thickness, linecolor, [x0,y0,r,θ1,θ2], isfill, color
+		graphics.drawArc(1, "#000", [100, 220, 50, 0, 2*Math.PI]);//默认是false
+		graphics.drawArc(1, "#000", [220, 220, 50, 0, 2*Math.PI], true, "#ccc");
+
+		//thickness, linecolor, [[x1,y1],[x2,y2],...], isfill, color
+		graphics.drawVertices(1, "#000", [[70, 300], [130, 300], [150, 350], [130, 400], [70, 400], [50, 350]]);//默认是false
+		graphics.drawVertices(1, "#000", [[190, 300], [250, 300], [270, 350], [250, 400], [190, 400], [170, 350]], true, "#ccc");
+
+		graphics.add(function(coodx, coody){
+			LGlobal.canvas.strokeStyle = "#f00";//为什么最后一个六边形的边框会叠加上红色？
+			LGlobal.canvas.moveTo(300, 50);
+			LGlobal.canvas.lineTo(300, 100);
+			LGlobal.canvas.stroke();
+
+		});
+	}
+
+</script>
+</body>
+</html>
