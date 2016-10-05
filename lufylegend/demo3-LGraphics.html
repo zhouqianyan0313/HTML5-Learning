@@ -8,8 +8,6 @@
 <body>
 <div id="mylegend">loading...</div>
 <script type="text/javascript">
-	var loader;
-
 	//speed, divid, width, height, completeFunc
 	init(50, "mylegend", 500, 500, main);
 
@@ -29,12 +27,22 @@
 		graphics.drawVertices(1, "#000", [[190, 300], [250, 300], [270, 350], [250, 400], [190, 400], [170, 350]], true, "#ccc");
 
 		graphics.add(function(coodx, coody){
-			LGlobal.canvas.strokeStyle = "#f00";//为什么最后一个六边形的边框会叠加上红色？
+			LGlobal.canvas.beginPath();//不加beginPath()，第二个六边形的边框会变成红色
+			LGlobal.canvas.strokeStyle = "#f00";
 			LGlobal.canvas.moveTo(300, 50);
 			LGlobal.canvas.lineTo(300, 100);
 			LGlobal.canvas.stroke();
 
 		});
+		// //与上同
+		// graphics.add(function(ctx){
+		// 	ctx.beginPath();//不加beginPath()，第二个六边形的边框会变成红色
+		// 	ctx.strokeStyle = "#f00";
+		// 	ctx.moveTo(300, 50);
+		// 	ctx.lineTo(300, 100);
+		// 	ctx.stroke();
+
+		// });
 	}
 
 </script>
