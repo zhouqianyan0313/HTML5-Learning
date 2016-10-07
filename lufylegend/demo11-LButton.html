@@ -16,7 +16,7 @@
 	function main(){
 		loader = new LLoader();
 		loader.addEventListener(LEvent.COMPLETE, loadUp);
-		loader.load("../test.png", "bitmapData");
+		loader.load("../image/test.png", "bitmapData");
 		
 	}
 
@@ -24,7 +24,7 @@
 		bitmapup = new LBitmap(new LBitmapData(loader.content));
 		loader = new LLoader();
 		loader.addEventListener(LEvent.COMPLETE, loadover);
-		loader.load("../colorful.png", "bitmapData");
+		loader.load("../image/colorful.png", "bitmapData");
 
 	}
 
